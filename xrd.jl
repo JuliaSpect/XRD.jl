@@ -3,6 +3,8 @@
 
 # Terrible terrible code that happens to work
 
+module XRD
+
 using Cubature:hcubature
 
 gaussian(mu,sigma) = x-> exp(-(x-mu)^2/(2sigma^2))/sqrt(2pi*sigma^2)
@@ -29,4 +31,6 @@ function stats(lines, min, max; delim=",")
     ds = map(distribution,l)
     overall = x->sum(d(x) for d in ds)
     (mean_p(overall,min,max),std_p(overall,min,max))
+end
+
 end
